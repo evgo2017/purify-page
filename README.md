@@ -7,7 +7,7 @@
 
 CSDN、掘金、简书、博客园、知乎专栏、知乎问题、V2EX、百度贴吧、百度经验、百度百科、百度知道等页面。
 
-![purify-page_csdn](./assets/purify-page_csdn.png)
+![purify-page_csdn](https://github.com/evgo2017/purify-page/raw/main/assets/purify-page_csdn.png)
 
 二、插件发布地址
 
