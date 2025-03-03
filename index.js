@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         极致净化页面
 // @namespace    https://evgo2017.com/purify-page
-// @version      0.1.0
+// @version      0.1.1
 // @description  完美阅读体验，去除广告、推荐等一系列和阅读无关的内容。CSDN、掘金、简书、博客园、知乎专栏、知乎问题、知乎问题、百度贴吧、百度经验、百度百科、百度知道集合。
 // @author       evgo2017
 // @match        https://juejin.cn/post/*
