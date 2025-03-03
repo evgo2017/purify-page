@@ -143,6 +143,7 @@
             remove('顶部导航', `#toolbarBox`)
             remove('边栏', `.blog_container_aside`, { isRemove: true })
             remove('右方广告', `#recommendAdBox`)
+            remove('右方广告', `#kp_box_530`)
             remove('右方分类专栏', `#recommend-right .kind_person`, { isRemove: true })
             remove('右方最新文章', `#asideArchive`)
             remove('下方推荐文章', `.recommend-box`, { isRemove: true, isRepeat: true })
