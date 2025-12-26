@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         极致净化页面
 // @namespace    https://evgo2017.com/purify-page
-// @version      0.1.1
+// @version      0.1.2
 // @description  完美阅读体验，去除广告、推荐等一系列和阅读无关的内容。CSDN、掘金、简书、博客园、知乎专栏、知乎问题、知乎问题、百度贴吧、百度经验、百度百科、百度知道集合。
 // @author       evgo2017
 // @match        https://juejin.cn/post/*
@@ -38,6 +38,7 @@
         remove("登录掘金领取礼包", `.bottom-login-guide`)
         remove("相关推荐", `#sidebar-container > div:nth-child(2) > div:nth-child(2)`)
         remove("精选内容", `#sidebar-container > div:nth-child(2) > div:nth-child(3)`)
+        remove("相关推荐", `#sidebar-container > div:nth-child(2) > div:nth-child(4))`)
         remove("找对属于你的技术圈子", `#sidebar-container > div.sidebar-block.wechat-sidebar-block.pure.wechat-ad`)
         break;
       }
@@ -77,6 +78,8 @@
         remove('上方话题推荐', `header`)
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
         remove('右侧边栏', `.Question-sideColumn`)
+        remove('右侧边栏', `.Question-sideColumn`)
+        remove('右侧导航', `.AdvertImg`)    
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         // 最大化阅读区域
         $('.Question-mainColumn').style.minWidth = '1000px'
