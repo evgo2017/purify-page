@@ -15,6 +15,7 @@
 // @match        https://baike.baidu.com/*
 // @match        https://zhidao.baidu.com/question/*
 // @match        https://tieba.baidu.com/p/*
+// @match        https://wenku.baidu.com/view/*
 // @match        https://v2ex.com/t/*
 // @match        https://post.smzdm.com/p/*
 // @match        https://blog.csdn.net/*/article/details/*
@@ -33,6 +34,8 @@
         console.log('匹配到 掘金 页面')
         remove("顶部导航条", `#juejin > div.view-container > div.main-header-box`)
         remove("右侧作者信息", `.author-block`)
+        remove("右侧精选内容", `.sidebar-block `)
+        remove("右侧广告", `.ad-container `)
         remove("下方相关推荐", `.recommended-area`)
         remove("回到顶部", `.suspension-panel`)
         remove("登录掘金领取礼包", `.bottom-login-guide`)
@@ -55,6 +58,9 @@
         remove('下方广告', `#sub-frame-error`)
         remove('下方推荐', `#__next > div._21bLU4._3kbg6I > div > div._gp-ck > section:nth-child(5)`)
         remove('底部', `footer`)
+        remove('底部被以下专题收入，发现更多相似内容', `#__next > div._21bLU4._3kbg6I > div > div._gp-ck > div:nth-child(4)`)
+        remove('底部相关阅读', `#__next > div._21bLU4._3kbg6I > div > div._gp-ck > div:nth-child(5)`)
+        remove('底部友情链接', `#__next > div._21bLU4._3kbg6I > div > div._gp-ck > div:nth-child(6)`)
         break;
       }
       case 'www.cnblogs.com': {
@@ -125,6 +131,35 @@
         remove("下方相关搜索", `#J-related-search`)
         break
       }
+      case 'wenku.baidu.com': {
+        console.log('匹配到 百度文库 页面')
+        remove("上方 header", `.new-header`)
+        remove("左侧推荐文档集", `#app-left`)
+        remove("右侧开通 VIP、排行榜、原创作者招募", `#app-right`)
+        remove("阅读器右上角工具栏 - 阅读页换肤", `.top-bar-right`)
+        remove("右上角工具栏 - 阅读页换肤", `.menubar`)
+        remove("下方下载区域", `.tool-bar-wrap`)
+        remove("阅读器内 - 内容推荐", `.hx-warp`, { repeat: true });
+        remove("下方广告区域", `.hx-recom-wrapper`)
+        remove("开通 VIP ", `.pc-cashier-card`)
+        remove("下一篇", `.page-icon`)
+        remove("版权信息", `.copyright-wrap`)
+        remove("vip 弹出内容", `.vip-member-pop-content`)
+        remove("全屏按钮", `.full-screen-icon`)
+        remove('下一篇推荐', `.pcstep-foot-pagination`)
+        remove('文章推荐', `.contract-wrap`)
+        // 最大化阅读区域，style 有被重新设置，所以延迟执行
+        setTimeout(() => {
+            const bodyDom = $(`#body`)
+            let currentDom = $(`.reader-wrap`)
+            while (currentDom !== bodyDom) {
+              currentDom.style.width = '100%'
+              currentDom.style.height = '100%'
+              currentDom = currentDom.parentElement
+            }
+        }, 1000);
+        break
+      }
       case 'zhidao.baidu.com': {
         console.log('匹配到 百度知道 页面')
         remove("热议", `.question-number-text-chain`)
@@ -155,6 +190,7 @@
             remove('下方推荐文章', `.recommend-box`, { isRemove: true, isRepeat: true })
             remove('新手引导、客服、举报、返回顶部', `.csdn-side-toolbar`, { isRemove: true })
             remove('觉得还不错？一键收藏', `.tool-active-list`, { isRemove: true })
+            remove('登录弹窗', `.passport-login-tip-container`)
             // 最大化阅读区域
             $(`#mainBox`).style.width = 'calc(100% - 320px)'
             const mainArea = $(`main`)
