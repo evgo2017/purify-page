@@ -174,7 +174,19 @@
       case 'tieba.baidu.com': {
         console.log('匹配到 百度贴吧 页面')
         remove('登录弹窗', `#tiebaCustomPassLogin > div.tieba-login-wrapper > span`, { isClick: true, isRepeat: true })
+        remove('登录弹窗', `.custom-ad-container`)
         remove("右侧贴吧热议榜", `.topic_list_box`)
+
+        // 移除帖子之间的广告
+        Array.from(document.querySelector(`#j_p_postlist`).children).forEach(i => {
+            if (i.tagName == 'DIV' && i.classList.contains('l_post')) {
+                if (i.getAttribute('data-field') == "{}") {
+                  i.remove();
+                }
+            } else {
+                i.remove();
+            }
+        })
         break
       }
       default: {
