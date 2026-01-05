@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         极致净化页面
 // @namespace    https://evgo2017.com/purify-page
-// @version      0.1.2
+// @version      0.1.3
 // @description  完美阅读体验，去除广告、推荐等一系列和阅读无关的内容。CSDN、掘金、简书、博客园、知乎专栏、知乎问题、知乎问题、百度贴吧、百度经验、百度百科、百度知道集合。
 // @author       evgo2017
 // @match        https://juejin.cn/post/*
@@ -67,7 +67,9 @@
       }
       case 'zhuanlan.zhihu.com': {
         console.log('匹配到 知乎专栏 页面')
+        remove('上方话题推荐', `header`)
         remove('顶部导航', `.ColumnPageHeader-Wrapper`)
+        remove('大家都在搜', `.HotSearchCard`)
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         remove('底部推荐阅读', `.Recommendations-Main`)
@@ -77,9 +79,9 @@
         console.log('匹配到 知乎问题 页面')
         remove('上方话题推荐', `header`)
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
+        remove('大家都在搜', `.HotSearchCard`)
         remove('右侧边栏', `.Question-sideColumn`)
-        remove('右侧边栏', `.Question-sideColumn`)
-        remove('右侧导航', `.AdvertImg`)    
+        remove('右侧导航', `.AdvertImg`)
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         // 最大化阅读区域
         $('.Question-mainColumn').style.minWidth = '1000px'
@@ -146,6 +148,7 @@
             remove('顶部导航', `#toolbarBox`)
             remove('边栏', `.blog_container_aside`, { isRemove: true })
             remove('右方广告', `#recommendAdBox`)
+            remove('右方广告', `.gitcode-work-space`, { isRepeat: true })
             remove('右方广告', `#kp_box_530`)
             remove('右方分类专栏', `#recommend-right .kind_person`, { isRemove: true })
             remove('右方最新文章', `#asideArchive`)
@@ -160,12 +163,18 @@
             // 加载更多代码
             Array.from(document.querySelectorAll(`.look-more-preCode`)).forEach(i => i.click())
             // 加载更多评论
-            lookMoreComment()
-            function lookMoreComment() {
+            const maxCount = 5
+            lookMoreComment(maxCount)
+            function lookMoreComment(count) {
               const dom =$('#lookGoodComment')
               if (dom != null && dom.style.display != 'none') {
-                $('.look-more-comment').click()
-                setTimeout(() => { lookMoreComment() }, 1000)
+                if (count < maxCount) { // 修复评论重复问题
+                  $('.look-more-comment').click()
+                }
+                if (count > 0) { // 避免评论过多，一直加载
+                  count--
+                  setTimeout(() => { lookMoreComment(count) }, 1000)
+                }
               } else {
                 Array.from(document.querySelectorAll(`.second-look-more`)).forEach(i => i.click())
               }
