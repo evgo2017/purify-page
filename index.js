@@ -76,6 +76,7 @@
         remove('上方话题推荐', `header`)
         remove('顶部导航', `.ColumnPageHeader-Wrapper`)
         remove('大家都在搜', `.HotSearchCard`)
+        remove('右侧导航', `.AdvertImg`, { isRepeat: true })
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         remove('底部推荐阅读', `.Recommendations-Main`)
@@ -87,7 +88,6 @@
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
         remove('大家都在搜', `.HotSearchCard`)
         remove('右侧边栏', `.Question-sideColumn`)
-        remove('右侧导航', `.AdvertImg`, { isRepeat: true })
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         // 最大化阅读区域
         $('.Question-mainColumn').style.minWidth = '1000px'
