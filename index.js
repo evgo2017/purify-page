@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         极致净化页面
 // @namespace    https://evgo2017.com/purify-page
-// @version      0.1.3
+// @version      0.1.4
 // @description  完美阅读体验，去除广告、推荐等一系列和阅读无关的内容。CSDN、掘金、简书、博客园、知乎专栏、知乎问题、知乎问题、百度贴吧、百度经验、百度百科、百度知道集合。
 // @author       evgo2017
 // @match        https://juejin.cn/post/*
@@ -87,7 +87,7 @@
         remove('登录弹窗', `.Modal-closeButton`, { isClick: true })
         remove('大家都在搜', `.HotSearchCard`)
         remove('右侧边栏', `.Question-sideColumn`)
-        remove('右侧导航', `.AdvertImg`)
+        remove('右侧导航', `.AdvertImg`, { isRepeat: true })
         remove('登录即可查看超5亿专业优质内容', `.css-woosw9`)
         // 最大化阅读区域
         $('.Question-mainColumn').style.minWidth = '1000px'

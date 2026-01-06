@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         极致净化知乎专栏页
 // @namespace    https://evgo2017.com/purify-page
-// @version      0.1
+// @version      0.1.4
 // @description  完美阅读体验，去除广告、推荐等一系列和阅读无关的内容
 // @author       evgo2017
 // @license      GNU GPLv2
@@ -22,6 +22,7 @@
     remove('登录弹窗', `.Modal-closeButton`, { remove: (dom) => dom.click() })
     remove('登录知乎，你可以享受以下权益', `.css-1hwwfws`)
     remove('登录即可查看超5亿专业优质内容', `.css-1ynzxqw`)
+    remove('右侧广告', `.AdvertImg`)
     remove('悬浮评论', `.css-805ti0`)
     remove('底部专栏', `.PostIndex-Contributions`, { remove: (dom) => { dom.innerHTML = '' } })
  
